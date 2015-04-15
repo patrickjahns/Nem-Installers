@@ -1,67 +1,155 @@
 #Nem-Installers#
 
-Here are two scripts that will install nem and its dependencies on Ubuntu 14.04
+This repository provides scripts for easy install of Nem Infrastructure Server (nis) and Nem Community Client (ncc) for running a Node.
 
-Something may break with nis and ncc updates. But i will attempt to keep the scripts current.
-No guarantees provided.
+**install_nem.sh**  
+Downloads the latest ncc-nis package from the [offical repository](http://bob.nem.ninja/), verifies the authenticity and installs ncc and nis.
 
-The first script, Install-nem-dependencies.sh, will create a swap file if wanted, download java and some other useful software, and setup a basic firewall.
+**ubuntu_install_nem_tools.sh**  
+Will install Oracle-Java-8 if needed, as well as other software. It also will help to create a swap partition and setup a basic firewall for the server
 
-The second script, Safe-nem-install.sh, will download the nis-ncc server directly from  http://bob.nem.ninja/ and check it with Gimre's published public key to be sure it is authentic.
-
-
-Changes
-April 14 2014 - Safe-nem-install.sh script will automatically get latest version and download , it also installs the client to a more standard linux installation 
-
-Thanks to mrjp and rigel :-)
+This script is currently tested against debian and ubuntu linux distributions. It might work on other distributions as well, but there is no guarantee. Feel free to help create scripts for other distributions
 
 
-Get both files by entering the command
+### Overview
+- [Installation](#installation)
+  + [Requirements](#requirements)
+  + [Instructions](#instructions)
+  + [Configuration](#configuration)  
+- [FAQ](#faq)
+  + [Install Oracle Java 8](#how-can-i-install-oracle-java-8)  
+  [Ubuntu](#ubuntu)  
+  [Debian](#debian)  
+- [Changelog](#changelog)
+- [Contributions](#contributions)
+- [License & Disclaimer](#licence-and-disclaimer)
 
-    wget https://github.com/jadedjack/Nem-Installers/archive/master.zip
+### Installation
+#### Requirements  
+The requirements for running nis and nem is Oracle Java 8.  
+For help installing Oracle Java 8 [please see here](#how-can-i-install-oracle-java-8) 
 
-Then uncompress them
+#### Instructions  
 
-    unzip master.zip
+Fetch the latest version of the scripts from the github repository and uncompress
+```
+wget https://github.com/jadedjack/Nem-Installers/archive/master.zip
+unzip master.zip
+```
 
-Then run the Install-nem-dependencies.sh script, follow the prompts when software is loaded.
+Install ncc/nis with this command and follow the instructions
+```
+./install_nem.sh
+```
 
-    ./Install-nem-dependencies.sh
+For installing tools and setting up a basic firewall just run
+```
+./ubuntu_install_nem_tools.sh
+```
 
-Then run Safe-nem-install.sh script.
+You can start nis or ncc by typing
+```
+sudo /etc/init.d/nis start
+sudo /etc/init.d/ncc start
+```
 
-    ./Safe-nem-install.sh
+Stopping nis or ncc is done via
+```
+sudo /etc/init.d/nis stop
+sudo /etc/init.d/ncc stop
+```
 
-You can choose to have NIS started automatically or,
+##### Configuration  
+Configuration files are located at /etc/nem and the subfolders /etc/nem/nis, /etc/nem/ncc, /etc/nem/mon
+Default configuration values are stored in _config.properties_ file and are overwritten by _config-user.properties_
 
-You can start NIS with
+For more information on NIS/NCC configuration options visit the official nem documentation
 
-    /etc/init.d/nis start
+### FAQ
 
-You can start NCC with
+#### How can I install Oracle Java 8?
+###### Ubuntu
+For ubuntu you need to add the webupd8team/java ppa repository and then run apt-get for installation  
 
-    /etc/init.d/ncc start
+```
+sudo add-apt-repository ppa:webupd8team/java -y
+sudo apt-get update
+sudo apt-get install oracle-java8-installer -y
+```
+For more Information visit [wepup8 Java 8 Ubuntu instructions](http://www.webupd8.org/2012/09/install-oracle-java-8-in-ubuntu-via-ppa.html)
+###### Debian
+For debian you need add the webupd8team/java ppa repository and then run apt-get for installation 
 
-Stop NIS with
+```
+su -
+echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee /etc/apt/sources.list.d/webupd8team-java.list
+echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+apt-get update
+apt-get install oracle-java8-installer
+exit
+```
+For more Information visit [wepup8 Java 8 Debian instructions](http://www.webupd8.org/2014/03/how-to-install-oracle-java-8-in-debian.html)
 
-    /etc/init.d/nis stop
+#### How can I updated my NEM installation
+Simply by using the command '_sudo UpgradeNem_'. The script will automatically check for the latest version and update your nem installation if necessary  
 
-Stop NCC with
 
-    /etc/init.d/ncc stop
+#### How can I disable/enable nis/nss from starting automatically?
+###### Disbale  
+**nis**
+```
+sudo update-rc.d nis remove
+```  
+  
+**ncc**
+```
+sudo update-rc.d ncc remove
+```
 
-Upgrade NIS NCC with latest version, for example
+###### Enable  
+**nis**
+```
+sudo update-rc.d nis defaults
+sudo update-rc.d nis enable
+```
 
-    UpgradeNem
+**ncc**
+```
+sudo update-rc.d ncc defaults
+sudo update-rc.d ncc enable
+```
+  
+#### How can I change the amount of RAM used for NIS?
+To change the RAM size that is allocated, edit _/etc/init.d/nis_
+Change _'export MAXRAM=1G'_ to your desired value (i.e 768M) 
 
-The configuration files are saved to /etc/nem
-If you want to change something in the nis configuration for example edit it with your favorite text editor.
+----
+For more information or discussion please visit [this thread on the OurNem Forum](https://forum.ournem.com/vps-nodes/how-to-easily-configure-and-install-nem-on-an-amazon-ec2-vps/msg14400/#msg14400)
 
-    sudo nano /etc/nem/nis/config-user.properties
+#### Changelog
+- 2014.04.14  
+   - automatically fetch latest Version  
+   - config files are now at /etc/nem  
+   - nem default installation directory is now /opt/nem  
+   - the directory for data is now located at /var/lib/nem  
+   - sanity checks for required installation dependencies  
 
-For more questions go to
+#### Contributions
+We would to thank the following people for creating (parts) of this script
+- Jadejack (initial version)
+- patrickjahns (further updates)
 
-[https://forum.ournem.com/vps-nodes/how-to-easily-configure-and-install-nem-on-an-amazon-ec2-vps/msg14400/#msg14400](https://forum.ournem.com/vps-nodes/how-to-easily-configure-and-install-nem-on-an-amazon-ec2-vps/msg14400/#msg14400 "Ournem Forum")
+The upstart scripts have been written by [riegel](https://forum.ournem.com/technical-discussion/secure-nis-and-ncc-setup-on-linux/) and modified for this release
 
-Good Luck and have fun.
- :)
+Please feel free to contribute to this repository.
+
+#### Licence and Disclaimer
+The scripts are Licensed under 3-clause BSD. 
+
+**Disclaimer**  
+This script is community maintained and any upgrade/update of the nem Software might brake the scripts
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+
+
