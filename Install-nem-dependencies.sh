@@ -1,4 +1,5 @@
 #!/bin/bash
+# Version 1.0
 # This script will attempt to install NEM dependencies and other software on Ubuntu 14.04. 
 # No guarantees that it will even work. Use at your own risk.
 # It was written to easily configure on a free Amazon EC2 VPS
