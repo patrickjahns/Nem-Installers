@@ -193,6 +193,9 @@ $sh_c "chown -R nis:nis $DATA_DIR/nis"
 $sh_c "mkdir -p $DATA_DIR/ncc"
 $sh_c "chown -R ncc:ncc $DATA_DIR/ncc"
 
+$sh_c "chown nis:nis $CONFIG_DIR/keys"
+
+$sh_c "chmod 0700 $CONFIG_DIR/keys"
 $sh_c "chmod -R g-w $INSTALL_DIR"
 $sh_c "chmod -R o-rwx $INSTALL_DIR"
 $sh_c "chmod -R g-w $DATA_DIR"
