@@ -343,7 +343,7 @@ function start {
              echo \[FAILED\]
              exit 3
            fi
-           STARTED=\`grep -m 1 \"NEM Infrastructure Server is ready to serve\" \$NISLOGFILE\`
+           STARTED=\`grep -m 1 \" NEM Deploy is ready to serve\" \$NISLOGFILE\`
            if [ -n \"\$STARTED\" ]
            then
              echo \[OK\]
