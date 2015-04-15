@@ -22,13 +22,14 @@ This script is currently tested against debian and ubuntu linux distributions. I
   [Debian](#debian)  
 - [Changelog](#changelog)
 - [Contributions](#contributions)
-- [License & Disclaimer](#licence-and-disclaimer)
+- [License & Disclaimer](#licence-and-disclaimer)  
+  
 
 ### Installation
 #### Requirements  
 The requirements for running nis and nem is Oracle Java 8.  
 For help installing Oracle Java 8 [please see here](#how-can-i-install-oracle-java-8) 
-
+  
 #### Instructions  
 
 Fetch the latest version of the scripts from the github repository and uncompress
@@ -36,22 +37,22 @@ Fetch the latest version of the scripts from the github repository and uncompres
 wget https://github.com/jadedjack/Nem-Installers/archive/master.zip
 unzip master.zip
 ```
-
+  
 Install ncc/nis with this command and follow the instructions
 ```
 ./install_nem.sh
 ```
-
+  
 For installing tools and setting up a basic firewall just run
 ```
 ./ubuntu_install_nem_tools.sh
-```
-
+```  
+  
 You can start nis or ncc by typing
 ```
 sudo /etc/init.d/nis start
 sudo /etc/init.d/ncc start
-```
+```  
 
 Stopping nis or ncc is done via
 ```
@@ -60,15 +61,17 @@ sudo /etc/init.d/ncc stop
 ```
 
 ##### Configuration  
-Configuration files are located at /etc/nem and the subfolders /etc/nem/nis, /etc/nem/ncc, /etc/nem/mon
-Default configuration values are stored in _config.properties_ file and are overwritten by _config-user.properties_
+Configuration files are located at `/etc/nem` and the subfolders `/etc/nem/nis`, `/etc/nem/ncc`, `/etc/nem/mon`
+Default configuration values are stored in `config.properties` file and are overwritten by `config-user.properties`
 
 For more information on NIS/NCC configuration options visit the official nem documentation
 
+
 ### FAQ
 
-#### How can I install Oracle Java 8?
-###### Ubuntu
+#### How can I install Oracle Java 8?  
+
+###### Ubuntu  
 For ubuntu you need to add the webupd8team/java ppa repository and then run apt-get for installation  
 
 ```
@@ -76,7 +79,8 @@ sudo add-apt-repository ppa:webupd8team/java -y
 sudo apt-get update
 sudo apt-get install oracle-java8-installer -y
 ```
-For more Information visit [wepup8 Java 8 Ubuntu instructions](http://www.webupd8.org/2012/09/install-oracle-java-8-in-ubuntu-via-ppa.html)
+For more Information visit [wepup8 Java 8 Ubuntu instructions](http://www.webupd8.org/2012/09/install-oracle-java-8-in-ubuntu-via-ppa.html)  
+
 ###### Debian
 For debian you need add the webupd8team/java ppa repository and then run apt-get for installation 
 
@@ -91,10 +95,10 @@ exit
 ```
 For more Information visit [wepup8 Java 8 Debian instructions](http://www.webupd8.org/2014/03/how-to-install-oracle-java-8-in-debian.html)
 
-#### How can I updated my NEM installation
-Simply by using the command '_sudo UpgradeNem_'. The script will automatically check for the latest version and update your nem installation if necessary  
-
-
+#### How can I updated my NEM installation  
+Simply by using the command `sudo UpgradeNem`. The script will automatically check for the latest version and update your nem installation if necessary  
+  
+  
 #### How can I disable/enable nis/nss from starting automatically?
 ###### Disbale  
 **nis**
@@ -121,8 +125,8 @@ sudo update-rc.d ncc enable
 ```
   
 #### How can I change the amount of RAM used for NIS?
-To change the RAM size that is allocated, edit _/etc/init.d/nis_
-Change _'export MAXRAM=1G'_ to your desired value (i.e 768M) 
+To change the RAM size that is allocated, edit `/etc/init.d/nis`
+Change the line `export MAXRAM=1G` to your desired value (i.e 768M) 
 
 ----
 For more information or discussion please visit [this thread on the OurNem Forum](https://forum.ournem.com/vps-nodes/how-to-easily-configure-and-install-nem-on-an-amazon-ec2-vps/msg14400/#msg14400)
