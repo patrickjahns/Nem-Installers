@@ -128,6 +128,10 @@ Change _'export MAXRAM=1G'_ to your desired value (i.e 768M)
 For more information or discussion please visit [this thread on the OurNem Forum](https://forum.ournem.com/vps-nodes/how-to-easily-configure-and-install-nem-on-an-amazon-ec2-vps/msg14400/#msg14400)
 
 #### Changelog
+- 2014.04.15  
+   - version bump to 0.1.1
+   - fixed permission for /etc/nem/keys
+   - updated README file
 - 2014.04.14  
    - automatically fetch latest Version  
    - config files are now at /etc/nem  
