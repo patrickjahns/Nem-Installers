@@ -261,7 +261,7 @@ function start {
   touch \$NCCPIDFILE && chown \$NCCUSER:\$NCCUSER \$NCCPIDFILE || exit 2
   su -c 'echo -n Starting NCC:
          cd \$NEMROOT/ncc
-         nohup java -cp \".:./*:../libs/*\" org.nem.core.deploy.CommonStarter >/dev/null 2>&1 &
+         nohup java -cp \".:./*:../libs/*\" org.nem.deploy.CommonStarter >/dev/null 2>&1 &
          NCCPID=\"\$!\"
          if [ -n \"\$NCCPID\" ]
          then
@@ -331,7 +331,7 @@ function start {
          PID=\`pgrep -n -u \$NISUSER java\`
          [ -n \"\$PID\" ] && exit 1
          cd \$NEMROOT/nis
-         nohup java -Xms512M -Xmx\$MAXRAM -cp \".:./*:../libs/*\" org.nem.core.deploy.CommonStarter >/dev/null 2>&1 &
+         nohup java -Xms512M -Xmx\$MAXRAM -cp \".:./*:../libs/*\" org.nem.deploy.CommonStarter >/dev/null 2>&1 &
          sleep 10
          export NISLOGFILE=\`ls \$NISLOGDIR/nis-*.log.lck | cut -d. -f1,2\`
          [ ! -f \"\$NISLOGFILE\" ] && exit 4
