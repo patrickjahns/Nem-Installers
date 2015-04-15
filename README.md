@@ -1,4 +1,4 @@
-# #Nem-Installers# #
+#Nem-Installers#
 
 Here are two scripts that will install nem and its dependencies on Ubuntu
 
