@@ -23,7 +23,7 @@ install_java_msg() {
 	echo >&2 "It seems that Oracle Java 8 is not installed on your system"
 	echo >&2 "NEM installer requires Oracle Java 8"
 	echo >&2 "For information on how to install Orcale Java 8 please visit:"
-	echo >&2 "https://github.com/jadedjack/Nem-Installers/blob/master/README.md#install-oracle-java-8"
+	echo >&2 "https://github.com/jadedjack/Nem-Installers#how-can-i-install-oracle-java-8"
 }
 
 #check our user and if not root if we can use su/sudu
