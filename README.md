@@ -1,6 +1,6 @@
 #Nem-Installers#
 
-Here are two scripts that will install nem and its dependencies on Ubuntu
+Here are two scripts that will install nem and its dependencies on Ubuntu 14.04
 
 Something may break with nis and ncc updates. But i will attempt to keep the scripts current.
 No guarantees provided.
