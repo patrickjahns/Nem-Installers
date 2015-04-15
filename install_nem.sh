@@ -1,10 +1,10 @@
 #!/bin/bash
 #=======================================
-# name		: Safe-nem-install.sh
+# name		: install_nem.sh
 # author 	: jadedjack
-# author	: mr.pj	
+# author	: mr.pj
 # date		: 20150414
-# version	: 0.1.0
+# version	: 0.1.1
 #========================================
 # This script will attempt to install NEM on Ubuntu .
 # No guarantees that it will even work. Use at your own risk.
