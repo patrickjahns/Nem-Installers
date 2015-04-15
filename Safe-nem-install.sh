@@ -12,6 +12,8 @@
 # Use a VPS server for secure remote harvesting only
 # For more Information visit
 # https://forum.ournem.com/vps-nodes/how-to-easily-configure-and-install-nem-on-an-amazon-ec2-vps/
+# Original upstart scripts by riegel, see:
+# https://forum.ournem.com/technical-discussion/secure-nis-and-ncc-setup-on-linux/
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin;
 INSTALL_DIR=/opt/nem
 DATA_DIR=/var/lib/nem
