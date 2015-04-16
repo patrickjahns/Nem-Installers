@@ -136,6 +136,7 @@ For more information or discussion please visit [this thread on the OurNem Forum
    - version bump to 0.1.1
    - fixed permission for /etc/nem/keys
    - updated README file
+   - adapted for 0.6.28 client naming conventions
 - 2014.04.14  
    - automatically fetch latest Version  
    - config files are now at /etc/nem  
